@@ -21,6 +21,14 @@ app.use(express.json());
 //         allowedHeaders: ['Content-Type'],
 //     })
 // );
+const corsConfig = {
+    origin: '',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig))
+
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello There!</h1>');
