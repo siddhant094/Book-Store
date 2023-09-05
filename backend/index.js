@@ -13,7 +13,7 @@ dotenv.config();
 app.use(express.json());
 
 //Middleware for handling CORS Policy
-app.use(cors());
+// app.use(cors());
 // app.use(
 //     cors({
 //         origin: 'http://localhost:3000/',
