@@ -30,6 +30,8 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello There!</h1>');
+    console.log(res);
+    console.log(req);
 });
 
 app.use('/books', booksRoute);
