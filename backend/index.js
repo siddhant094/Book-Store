@@ -1,9 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { Book } from './models/bookModels.js';
 import booksRoute from './routes/booksRoute.js';
-import cors from 'cors';
+// import cors from 'cors';
 
 const app = express();
 
@@ -20,15 +19,14 @@ app.use(express.json());
 //         methods: ['GET', 'POST', 'PUT', 'DELETE'],
 //         allowedHeaders: ['Content-Type'],
 //     })
-// );
-const corsConfig = {
-    origin: '',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}
-app.use(cors(corsConfig))
-app.options("", cors(corsConfig))
-
+// // );
+// const corsConfig = {
+//     origin: '',
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE']
+// }
+// app.use(cors(corsConfig))
+// app.options("", cors(corsConfig))
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello There!</h1>');
@@ -37,11 +35,13 @@ app.get('/', (req, res) => {
 app.use('/books', booksRoute);
 
 mongoose
-    .connect(process.env.MongoDBURL)
+    .connect(
+        'mongodb+srv://pandeysiddhant21:bWTp82wib2cgZvZJ@book-store-mern.6a5oqhk.mongodb.net/books-collection?retryWrites=true&w=majority'
+    )
     .then(() => {
         console.log('app connected to database.');
-        app.listen(process.env.PORT, () => {
-            console.log(`app is listening to port: ${process.env.PORT}`);
+        app.listen(5555, () => {
+            console.log(`app is listening to port: 5555`);
         });
     })
     .catch((err) => {
