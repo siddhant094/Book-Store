@@ -1,19 +1,20 @@
-// import fetch from 'node-fetch';
 import express from 'express';
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
-// import cors from 'cors';
+import cors from 'cors';
 
 const app = express();
 
-// dotenv.config();
+dotenv.config();
+
+const port = process.env.port || 5500;
 
 // body-parser
 app.use(express.json());
 
 //Middleware for handling CORS Policy
-// app.use(cors());
+app.use(cors());
 // app.use(
 //     cors({
 //         origin: 'http://localhost:3000/',
@@ -21,30 +22,19 @@ app.use(express.json());
 //         allowedHeaders: ['Content-Type'],
 //     })
 // // );
-// const corsConfig = {
-//     origin: '',
-//     credentials: true,
-//     methods: ['GET', 'POST', 'PUT', 'DELETE']
-// }
-// app.use(cors(corsConfig))
-// app.options("", cors(corsConfig))
 
 app.get('/', (req, res) => {
-    res.send('Hello There!');
-    // console.log(res);
-    // console.log(req);
+    res.send('<h1>Hello There!</h1>');
 });
 
-// app.use('/books', booksRoute);
+app.use('/books', booksRoute);
 
 mongoose
-    .connect(
-        'mongodb+srv://pandeysiddhant21:bWTp82wib2cgZvZJ@book-store-mern.6a5oqhk.mongodb.net/books-collection?retryWrites=true&w=majority'
-    )
+    .connect(process.env.MongoDBURL)
     .then(() => {
         console.log('app connected to database.');
-        app.listen(5555, () => {
-            console.log(`app is listening to port: 5555`);
+        app.listen(port, () => {
+            console.log(`app is listening to port: ${port}`);
         });
     })
     .catch((err) => {
