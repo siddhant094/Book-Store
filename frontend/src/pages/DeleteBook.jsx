@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import BackButton from '../components/backButton';
+import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import { enqueueSnackbar, useSnackbar } from 'notistack';
 
