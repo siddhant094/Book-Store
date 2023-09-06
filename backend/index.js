@@ -29,7 +29,7 @@ app.use(express.json());
 // app.options("", cors(corsConfig))
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello There!</h1>');
+    res.json('Hello There!');
     // console.log(res);
     // console.log(req);
 });
