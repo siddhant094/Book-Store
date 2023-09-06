@@ -1,12 +1,13 @@
+// import fetch from 'node-fetch';
 import express from 'express';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 // import cors from 'cors';
 
 const app = express();
 
-dotenv.config();
+// dotenv.config();
 
 // body-parser
 app.use(express.json());
@@ -27,15 +28,12 @@ app.use(express.json());
 // }
 // app.use(cors(corsConfig))
 // app.options("", cors(corsConfig))
-try {
-    app.get('/', (req, res) => {
-        res.send('Hello There!');
-        // console.log(res);
-        // console.log(req);
-    });
-} catch (error) {
-    console.log(error);
-}
+
+app.get('/', (req, res) => {
+    res.send('Hello There!');
+    // console.log(res);
+    // console.log(req);
+});
 
 // app.use('/books', booksRoute);
 
