@@ -30,11 +30,11 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello There!</h1>');
-    console.log(res);
-    console.log(req);
+    // console.log(res);
+    // console.log(req);
 });
 
-app.use('/books', booksRoute);
+// app.use('/books', booksRoute);
 
 mongoose
     .connect(
