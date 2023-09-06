@@ -27,12 +27,15 @@ app.use(express.json());
 // }
 // app.use(cors(corsConfig))
 // app.options("", cors(corsConfig))
-
-app.get('/', (req, res) => {
-    res.json('Hello There!');
-    // console.log(res);
-    // console.log(req);
-});
+try {
+    app.get('/', (req, res) => {
+        res.send('Hello There!');
+        // console.log(res);
+        // console.log(req);
+    });
+} catch (error) {
+    console.log(error);
+}
 
 // app.use('/books', booksRoute);
 
